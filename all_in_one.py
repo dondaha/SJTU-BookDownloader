@@ -136,7 +136,9 @@ while True:
 # 保存PDF
 img0 = images[0]
 now = datetime.datetime.now()
-pdf_name = '图书下载' + now.strftime("%Y_%m_%d_%H_%M_%S") + '.pdf'
+if not os.path.exists('saved'):
+    os.mkdir('saved')
+pdf_name = '.\\saved\\图书下载' + now.strftime("%Y_%m_%d_%H_%M_%S") + '.pdf'
 img0.save(pdf_name, "PDF", resolution=100.0, save_all=True, append_images=images[1:])
 
 # 计算总过程耗时
@@ -144,5 +146,5 @@ end_time = time.time()
 # 计算文件大小
 file_size = os.path.getsize(pdf_name)/float(1024)/float(1024)
 print('图书大小为：'+str(file_size)+'MB'+'，下载此本图书过程共耗时：'+str(end_time-start_time)+'s')
-print('您要的文件已保存为:'+str(pdf_name))
+print('您要的文件已保存在:'+str(pdf_name))
 input('按回车键退出...')
