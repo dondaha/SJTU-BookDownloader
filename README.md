@@ -8,7 +8,7 @@
 ## 使用教程
 
 ### 下载
-建议在右侧直接下载release，不用在本地配置环境
+建议在右侧直接下载`release`，不用在本地配置环境。点击`release`，选择`SJTU-BookDownloader-v1.0.exe`下载。
 
 ### 使用
  首先你需要连接到校园网或者VPN，然后进入你要的图书的浏览界面，
@@ -27,7 +27,7 @@
 
 ![](.README_images/96ddb7e6.png)
 
-之后打开 `all_in_one.exe` ，直接右键点击窗口，粘贴刚才的链接
+之后打开 `SJTU-BookDownloader-v1.0.exe` ，直接右键点击窗口，粘贴刚才的链接
 
 ![](.README_images/ddba56bc.png)
 

@@ -14,7 +14,11 @@ def download_source(url_url, headers, cookies):
     raw_picture = raw_picture.content
     if len(raw_picture) != 0:
         raw_picture = BytesIO(raw_picture)
-        raw_picture = Image.open(raw_picture)
+        try:
+            raw_picture = Image.open(raw_picture)
+        except:
+            print('网络错误')
+            return False
         return raw_picture
     else:
         return False
