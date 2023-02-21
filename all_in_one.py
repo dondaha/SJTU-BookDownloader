@@ -8,13 +8,17 @@ import datetime
 import os
 
 
-def download_source(url, headers, cookies):
+def download_source(url_url, headers, cookies):
     """下载文件，返回一个内存中的图片，如果下载失败则返回bool值False"""
-    raw_picture = requests.get(url=url, stream=False, headers=headers, verify=False, cookies=cookies)
+    raw_picture = requests.get(url=url_url, stream=False, headers=headers, verify=False, cookies=cookies)
     raw_picture = raw_picture.content
     if len(raw_picture) != 0:
         raw_picture = BytesIO(raw_picture)
-        raw_picture = Image.open(raw_picture)
+        try:
+            raw_picture = Image.open(raw_picture)
+        except:
+            print('网络错误')
+            return False
         return raw_picture
     else:
         return False
@@ -99,7 +103,9 @@ now = datetime.datetime.now()
 if not os.path.exists('saved'):
     os.mkdir('saved')
 pdf_name = '.\\saved\\图书下载' + now.strftime("%Y_%m_%d_%H_%M_%S") + '.pdf'
-img0.save(pdf_name, "PDF", resolution=100.0, save_all=True, append_images=images[1:])
+img0.save(pdf_name, "PDF", resolution=75.0, save_all=True, append_images=images[1:])
+# 释放内存
+images = 0
 
 # 计算总过程耗时
 end_time = time.time()
