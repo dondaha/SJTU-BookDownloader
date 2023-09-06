@@ -15,7 +15,7 @@ def download_source(url_url, headers, cookies):
     if len(raw_picture) != 0:
         raw_picture = BytesIO(raw_picture)
         try:
-            raw_picture = Image.open(raw_picture)
+            raw_picture = Image.open(raw_picture).convert('RGB')
         except:
             print('网络错误')
             return False
@@ -104,8 +104,6 @@ if not os.path.exists('saved'):
     os.mkdir('saved')
 pdf_name = '.\\saved\\图书下载' + now.strftime("%Y_%m_%d_%H_%M_%S") + '.pdf'
 img0.save(pdf_name, "PDF", resolution=75.0, save_all=True, append_images=images[1:])
-# 释放内存
-images = 0
 
 # 计算总过程耗时
 end_time = time.time()
